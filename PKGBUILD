@@ -1,6 +1,5 @@
 # Maintainer: Benjamin Althues <benjamin@babab.nl>
 
-name=Gitto
 pkgname=gitto-git
 pkgver=20130523
 pkgrel=1
@@ -16,11 +15,11 @@ _gitname=master
 build() {
     cd "$srcdir"
 
-    if [ ! -d $name ]; then
-        git clone $_gitroot $name;
-        cd $name
+    if [ ! -d $pkgname ]; then
+        git clone $_gitroot $pkgname;
+        cd $pkgname
     else
-        cd $name
+        cd $pkgname
         git pull origin $_gitname
     fi
 
@@ -28,6 +27,6 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$name"
+    cd "$srcdir/$pkgname"
     make DESTDIR="$pkgdir" install
 }
